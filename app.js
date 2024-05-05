@@ -198,8 +198,8 @@ main();
 
 
 
-const request = require('request-promise');
-const cheerio = require('cheerio');
+//  request = require('request-promise');
+/*const cheerio = require('cheerio');
 
 
 const url = 'https://www.fantasyfootballscout.co.uk/fantasy-football-injuries/';
@@ -272,7 +272,7 @@ app.get('/predictInjury', async (req, res) => {
   res.send(response.data);
 });
 
-
+*/
 
 
 const NEWS_API_URL = 'https://newsapi.org/v2/top-headlines';
