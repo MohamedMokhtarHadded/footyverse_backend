@@ -6,7 +6,7 @@ const dotenv = require("dotenv");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { CreateSuccess } = require('../utils/success.js');
-const User = require('../models/user.js');
+const User = require('../models/User.js');
 
 
 
