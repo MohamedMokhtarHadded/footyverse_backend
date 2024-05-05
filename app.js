@@ -26,7 +26,7 @@ const players = require('./routes/player-routes');
 const notificationRoute = require('./routes/notification');
 
 //allow ports 4200 and 4201 to access the server
-app.use(cors({origin: ['http://localhost:4200', 'http://localhost:4201']}));
+app.use(cors({origin: ['http://localhost:4200', 'http://localhost:4201', 'https://footyverse-frontoffice-s3f6.vercel.app']}));
 
 app.use(express.json());
 
