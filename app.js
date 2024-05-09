@@ -30,8 +30,8 @@ app.use(cors({
   origin: ['http://localhost:4200',
     'http://localhost:4201',
     'https://footyverse-frontoffice-s3f6.vercel.app',
-    'https://footyverse-backoffice.vercel.app'],
-  '*'
+    'https://footyverse-backoffice.vercel.app',
+    '*']
 }));
 
 app.use(express.json());
