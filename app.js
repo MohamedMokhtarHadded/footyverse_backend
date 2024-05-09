@@ -26,11 +26,16 @@ const players = require('./routes/player-routes');
 const notificationRoute = require('./routes/notification');
 
 //allow ports 4200 and 4201 to access the server
-app.use(cors({origin: ['http://localhost:4200', 'http://localhost:4201', 'https://footyverse-frontoffice-s3f6.vercel.app']}));
+app.use(cors({
+  origin: ['http://localhost:4200',
+    'http://localhost:4201',
+    'https://footyverse-frontoffice-s3f6.vercel.app',
+    'https://footyverse-backoffice.vercel.app']
+}));
 
 app.use(express.json());
 
-app.use('/player',players)
+app.use('/player', players)
 app.use('/training', trainingRoutes);
 app.use('/exercise', exerciseRoutes);
 app.use('/images', express.static('images'));
@@ -110,15 +115,15 @@ io.on('connection', (socket) => {
 /*****************************************************/
 
 
-app.use((obj, req, res, next)=>{
-    const statusCode = obj.status || 500;
-    const message = obj.message || "Something went wrong!";
-    return res.status(statusCode).json({
-        success: [200,201,204].some(a=> a === obj.status) ? true : false ,
-        status: statusCode,
-        message: message,
-        data: obj.data
-    });
+app.use((obj, req, res, next) => {
+  const statusCode = obj.status || 500;
+  const message = obj.message || "Something went wrong!";
+  return res.status(statusCode).json({
+    success: [200, 201, 204].some(a => a === obj.status) ? true : false,
+    status: statusCode,
+    message: message,
+    data: obj.data
+  });
 });
 
 
@@ -281,21 +286,21 @@ const API_KEY = 'ec85e69f54a541baa7056e799229254d';
 // Route to fetch and return sports headlines from News API
 app.get('/sports-headlines', async (req, res) => {
 
-    try {
-        const response = await axios.get(NEWS_API_URL, {
-            params: {
-                country: 'gb',
-                category: 'sports',
-                apiKey: API_KEY
-            }
-        });
+  try {
+    const response = await axios.get(NEWS_API_URL, {
+      params: {
+        country: 'gb',
+        category: 'sports',
+        apiKey: API_KEY
+      }
+    });
 
-        const responseData = response.data;
-        res.json(responseData);
-    } catch (error) {
-        console.error('Error fetching sports headlines:', error.message);
-        res.status(500).json({ error: 'Failed to fetch sports headlines' });
-    }
+    const responseData = response.data;
+    res.json(responseData);
+  } catch (error) {
+    console.error('Error fetching sports headlines:', error.message);
+    res.status(500).json({ error: 'Failed to fetch sports headlines' });
+  }
 });
 
 
